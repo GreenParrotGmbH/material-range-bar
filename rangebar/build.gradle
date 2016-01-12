@@ -1,17 +1,14 @@
 apply plugin: 'com.android.library'
 apply plugin: 'maven'
 apply plugin: 'signing'
-apply from: '../maven_push.gradle'
 
 version = "1.3"
 group = "com.appyvet"
-dependencies {
-    compile 'com.android.support:support-v4:23.1.0'
-}
+
 android {
 
     compileSdkVersion 23
-    buildToolsVersion "23.0.1"
+    buildToolsVersion "23.0.2"
 
     defaultConfig {
         minSdkVersion 12
@@ -27,14 +24,9 @@ android {
     }
 }
 
-repositories {
-    mavenCentral()
+dependencies {
+    compile 'com.android.support:support-v4:23.1.1'
 }
-
-//signing {
-//    required { has("release") && gradle.taskGraph.hasTask("uploadArchives") }
-//    sign configurations.archives
-//}
 
 task publishLocal(type: Upload) {
     configuration = configurations.archives
